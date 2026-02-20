@@ -60,6 +60,10 @@ class _TaskHomePageState extends State<TaskHomePage> {
       _tasks.insert(0, task);
       _controller.clear();
     });
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Task created: $task')),
+    );
   }
 
   Future<void> _toggleListening() async {
@@ -86,6 +90,10 @@ class _TaskHomePageState extends State<TaskHomePage> {
             offset: _controller.text.length,
           );
         });
+
+        if (result.finalResult) {
+          _createTaskFromInput(result.recognizedWords);
+        }
       },
       listenFor: const Duration(seconds: 20),
       pauseFor: const Duration(seconds: 3),

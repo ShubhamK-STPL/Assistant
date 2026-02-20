@@ -1,28 +1,31 @@
 # Voice Chat Tasker (Flutter Android)
 
-This Flutter app creates tasks from:
+A Flutter Android app that creates task items from either typed text (chat-style command) or voice input.
 
-- **Chat text input** (typed command)
-- **Voice dictation** (speech-to-text)
+## What is implemented
 
-## Features
+- Text command input (`Create task buy milk`, `Remember to call mom`, etc.)
+- Voice dictation using `speech_to_text`
+- Command parsing to extract the actual task title
+- Task list UI (new tasks inserted at the top)
+- Android microphone permission configuration
 
-- Type commands like `Create task buy milk`
-- Tap the mic button and speak a command
-- Extracts clean task titles from common command prefixes
-- Shows created tasks in a list
+## Project structure
 
-## Run locally
+- `lib/main.dart`: app UI + voice + task creation flow
+- `lib/task_parser.dart`: parser for extracting task titles
+- `test/task_parser_test.dart`: parser unit tests
+- `android/`: Android Gradle/app scaffold required for Flutter Android builds
+
+## Run
 
 ```bash
 flutter pub get
-flutter run
+flutter run -d android
 ```
 
-## Example inputs
+## Test
 
-- `Create task: send project update`
-- `Remember to call mom`
-- `todo finish Flutter UI`
-
-These become task titles inside the app.
+```bash
+flutter test
+```
