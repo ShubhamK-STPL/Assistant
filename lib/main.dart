@@ -104,6 +104,12 @@ class _TaskHomePageState extends State<TaskHomePage> {
 
         if (result.finalResult) {
           _createTaskFromInput(result.recognizedWords);
+          _speechToText.stop();
+          if (mounted) {
+            setState(() {
+              _isListening = false;
+            });
+          }
         }
       },
       listenFor: const Duration(seconds: 30),
@@ -129,11 +135,9 @@ class _TaskHomePageState extends State<TaskHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final platformLabel = kIsWeb ? 'Web + Android' : 'Android + Web';
-
     return Scaffold(
       appBar: AppBar(
-        title: Text('Task creator ($platformLabel)'),
+        title: Text(kIsWeb ? 'Task creator (Web)' : 'Task creator (Android)'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
