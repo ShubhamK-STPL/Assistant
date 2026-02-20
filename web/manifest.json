@@ -1,0 +1,10 @@
+{
+  "name": "Voice Chat Tasker",
+  "short_name": "Tasker",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#673ab7",
+  "description": "Create tasks from chat text or voice.",
+  "orientation": "portrait-primary"
+}
